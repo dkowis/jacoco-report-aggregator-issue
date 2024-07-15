@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration>
+  <import class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
+  <import class="ch.qos.logback.core.ConsoleAppender"/>
+
+  <appender name="STDOUT" class="ConsoleAppender">
+    <encoder class="PatternLayoutEncoder">
+      <pattern>%d{HH:mm:ss.SSS} traceID=%X{traceId:-NONE},spanID=%X{spanId:-NONE} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--
+   Trace level logging enables lots of output for the fake protector
+   Trace level logging won't leak anything from the Protegrity Protector.
+  -->
+  <Logger name="com.example" level="debug"/>
+  <Logger name="example.autoconfigure" level="trace"/>
+
+  <root level="error">
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>

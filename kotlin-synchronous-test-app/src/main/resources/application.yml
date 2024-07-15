@@ -1,0 +1,8 @@
+upstream.url: https://httpbin.org/headers
+
+example:
+  correlation-id:
+    header-names:
+      - correlation-id
+      - x-correlation-id
+      - x-example-correlationid
